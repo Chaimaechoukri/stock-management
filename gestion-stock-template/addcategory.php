@@ -30,7 +30,7 @@ session_start();
     content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
   <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Add Category</title>
+  <title>Ajouter Categorie</title>
 
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 
@@ -62,8 +62,8 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Product Add Category</h4>
-            <h6>Create New Product Category</h6>
+            <h4>Ajouter une catégorie de produit</h4>
+            <h6>Ajouter une nouvelle catégorie de produit</h6>
           </div>
         </div>
         <div class="card">
@@ -71,7 +71,7 @@ session_start();
             <form class="row" method="post" action="addcategory.php" enctype="multipart/form-data">
               <div class="col-lg-6 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Category Name</label>
+                  <label>Nom Categorie</label>
                   <input type="text" name="lib_cat" />
                 </div>
               </div>
@@ -83,19 +83,19 @@ session_start();
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label> Product Image</label>
+                  <label> Image Produit</label>
                   <div class="image-upload">
                     <input type="file" name="image" accept="image/png, image/jpeg" />
                     <div class="image-uploads">
                       <img src="assets/img/icons/upload.svg" alt="img" />
-                      <h4>Drag and drop a file to upload</h4>
+                      <h4>Glissez-déposez un fichier pour le télécharger</h4>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-12">
-                <button class="btn btn-submit me-2" type="submit" name="add">Add Category</button>
-                <a href="categorylist.php" class="btn btn-cancel">Cancel</a>
+                <button class="btn btn-submit me-2" type="submit" name="add">Ajouter Categorie</button>
+                <a href="categorylist.php" class="btn btn-cancel">Annuler</a>
             </form>
           </div>
         </div>

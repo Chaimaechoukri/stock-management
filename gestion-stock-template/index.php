@@ -32,15 +32,15 @@ session_start();
     // print_r($clients); 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta name="description" content="POS - Bootstrap Admin Template">
+    <meta name="description" content="POS - Modèle d'administration Bootstrap">
     <meta name="keywords"
-        content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern,  html5, responsive">
-    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        content="admin, estimations, bootstrap, business, corporate, creative, management, minimal, modern,  html5, responsive">
+    <meta name="author" content="Dreamguys - Modèle d'administration Bootstrap">
     <meta name="robots" content="noindex, nofollow">
     <title>AMITAM Store</title>
 
@@ -72,59 +72,15 @@ session_start();
         <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="dash-widget">
-                            <div class="dash-widgetimg">
-                                <span><img src="assets/img/icons/dash1.svg" alt="img"></span>
-                            </div>
-                            <?php ?>
-                            <?php ?>
-                            <div class="dash-widgetcontent">
-                                <h5><span class="counters" data-count="<?= $total_all_pur ?>"><?= $total_all_pur ?>DH</span></h5>
-                                <h6>Total Purchases (DH)</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="dash-widget dash1">
-                            <div class="dash-widgetimg">
-                                <span><img src="assets/img/icons/dash2.svg" alt="img"></span>
-                            </div>
-                            <div class="dash-widgetcontent">
-                                <h5><span class="counters" data-count="<?= $total_all_sales ?>"><?= $total_all_sales ?>DH</span></h5>
-                                <h6>Total Sales (DH)</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="dash-widget dash2">
-                            <div class="dash-widgetimg">
-                                <span><img src="assets/img/icons/dash3.svg" alt="img"></span>
-                            </div>
-                            <div class="dash-widgetcontent">
-                                <h5><span class="counters" data-count="<?= $total_all_sales - $total_all_pur ?>"><?= $total_all_sales - $total_all_pur ?>DH</span></h5>
-                                <h6>Total Profit (DH)</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="dash-widget dash3">
-                            <div class="dash-widgetimg">
-                                <span><img src="assets/img/icons/dash4.svg" alt="img"></span>
-                            </div>
-                            <div class="dash-widgetcontent">
-                                <h5><span class="counters" data-count="<?= $total_all_pr ?>"><?= $total_all_pr ?>
-                                        DH</span>
-                                </h5>
-                                <h6>Total Products</h6>
-                            </div>
-                        </div>
-                    </div>
+                    
+                   
+                 
+                   
                     <div class="col-lg-3 col-sm-6 col-12 d-flex">
                         <div class="dash-count">
                             <div class="dash-counts">
                                 <h4><?= $clients ?></h4>
-                                <h5>Customers</h5>
+                                <h5>Clients</h5>
                             </div>
                             <div class="dash-imgs">
                                 <i data-feather="user"></i>
@@ -135,7 +91,7 @@ session_start();
                         <div class="dash-count das1">
                             <div class="dash-counts">
                                 <h4><?= $suppliers ?></h4>
-                                <h5>Suppliers</h5>
+                                <h5>Fournisseurs</h5>
                             </div>
                             <div class="dash-imgs">
                                 <i data-feather="user-check"></i>
@@ -146,7 +102,7 @@ session_start();
                         <div class="dash-count das2">
                             <div class="dash-counts">
                                 <h4><?= $purchases ?></h4>
-                                <h5>Purchase Invoice</h5>
+                                <h5>Factures d'achat</h5>
                             </div>
                             <div class="dash-imgs">
                                 <i data-feather="file-text"></i>
@@ -157,7 +113,7 @@ session_start();
                         <div class="dash-count das3">
                             <div class="dash-counts">
                                 <h4><?= $sales ?></h4>
-                                <h5>Sales Invoice</h5>
+                                <h5>Factures de vente</h5>
                             </div>
                             <div class="dash-imgs">
                                 <i data-feather="file"></i>
@@ -169,14 +125,14 @@ session_start();
                 <div class="row">
                     <div class="col-lg-7 col-sm-12 col-12 d-flex">
                         <div class="card flex-fill">
-                            <h4 class="card-title mb-0" style="padding:15px;">Top 4 Sales</h4>
+                            <h4 class="card-title mb-0" style="padding:15px;">Top 4 des ventes</h4>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Sale reference</th>
-                                        <th>Customer</th>
+                                        <th>Référence de vente</th>
+                                        <th>Client</th>
                                         <th>Date</th>
-                                        <th>Grand Total (DH)</th>
+                                        <th>Total (DH)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -200,7 +156,7 @@ session_start();
                     <div class="col-lg-5 col-sm-12 col-12 d-flex">
                         <div class="card flex-fill">
                             <div class="card-header pb-0 d-flex justify-content-between align-items-center">
-                                <h4 class="card-title mb-0">Recently Added Products</h4>
+                                <h4 class="card-title mb-0">Produits ajoutés récemment</h4>
                                 <div class="dropdown">
                                     <a href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false"
                                         class="dropset">
@@ -208,10 +164,10 @@ session_start();
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li>
-                                            <a href="productlist.php" class="dropdown-item">Product List</a>
+                                            <a href="productlist.php" class="dropdown-item">Liste des produits</a>
                                         </li>
                                         <li>
-                                            <a href="addproduct.php" class="dropdown-item">Add Product</a>
+                                            <a href="addproduct.php" class="dropdown-item">Ajouter un produit</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -221,9 +177,9 @@ session_start();
                                     <table class="table datatable ">
                                         <thead>
                                             <tr>
-                                                <th>Sno</th>
-                                                <th>Products</th>
-                                                <th>Price</th>
+                                                <th>N°</th>
+                                                <th>Produits</th>
+                                                <th>Prix</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -252,17 +208,17 @@ session_start();
                 </div>
                 <div class="card mb-0">
                     <div class="card-body">
-                        <h4 class="card-title">Least Quantity in Stock</h4>
+                        <h4 class="card-title">Quantité minimale en stock</h4>
                         <div class="table-responsive dataview">
                             <table class="table datatable ">
                                 <thead>
                                     <tr>
-                                        <th>SNo</th>
-                                        <th>Product Name</th>
-                                        <th>Brand Name</th>
-                                        <th>Category Name</th>
-                                        <th>Purchase price</th>
-                                        <th>Remaining quantity</th>
+                                        <th>N°</th>
+                                        <th>Nom du produit</th>
+                                        <th>Nom de la marque</th>
+                                        <th>Nom de la catégorie</th>
+                                        <th>Prix d'achat</th>
+                                        <th>Quantité restante</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -313,3 +269,4 @@ session_start();
 <?php else: ?>
 <?php header("Location: signin.php"); ?>
 <?php endif ?>
+

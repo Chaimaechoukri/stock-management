@@ -1,78 +1,71 @@
 <?php
-// header('Content-Type: application/json, charset=UTF-8');
-
-// $request_payload = file_get_contents('php://input');
-
-// var_dump($request_payload);
-// $input = file_get_contents('php://input');
-// var_dump($input);
 session_start();
 ?>
 <?php if (isset($_SESSION['admin'])): ?>
 <?php
 
-  require_once("../php/Class/Product.php");
-  require_once("../php/Class/Marque.php");
-  require_once("../php/Class/Categorie.php");
-  require_once("../php/Class/Client.php");
-  require_once("../php/Class/Sale.php");
-  require_once("../php/Class/PrSale.php");
-  $active = array(0, 0, 0, 0, 0, 0, 0, 0, "active", 0, 0, 0, 0, 0, 0, 0, 0);
-  if (isset($_POST['add'])) {
-    extract($_POST);
-    // ila deja 3amro inser had purchase ..
-    $qty = Product::qtePr($num_pr);
-    // print_r($_POST);
-    if ($qte_pr < $qty['qte_stock']) {
-
-      if (!sale::isSale($num_com)) {
-        $pruchase = new Sale($num_com, $date_com, $id_cli);
-        $pruchase->add();
-      }
-      // echo ("<pre>");
-      // print_r($_POST);
-      $product_of_sale = new PrSale($num_pr, $num_com, $qte_pr, $prix_vente);
-      try {
-        $product_of_sale->add();
-      } catch (\Throwable $th) {
-      }
-      Product::deleteQty($num_pr, $qte_pr);
-      $prsSales = PrSale::displayPrsSale($num_com);
-      $sale = Sale::displaySale($num_com);
-    } else {
-      $out_of_stock = true;
-    }
-  }
-
+require_once("../php/Class/Product.php");
+require_once("../php/Class/Marque.php");
+require_once("../php/Class/Categorie.php");
+require_once("../php/Class/Client.php");
+require_once("../php/Class/Sale.php");
+require_once("../php/Class/PrSale.php");
+$active = array(0, 0, 0, 0, 0, 0, 0, 0, "active", 0, 0, 0, 0, 0, 0, 0, 0);
+if (isset($_POST['add'])) {
+  extract($_POST);
+  // ila deja 3amro inser had purchase ..
+  $qty = Product::qtePr($num_pr);
   // print_r($_POST);
-  // print_r($_GET);
-  // print_r($_SESSION);
+  if ($qte_pr < $qty['qte_stock']) {
 
-  if (isset($_GET['num_pr'])) {
-    extract($_GET);
-    PrSale::deletePrSale($num_pr);
+    if (!sale::isSale($num_com)) {
+      $pruchase = new Sale($num_com, $date_com, $id_cli);
+      $pruchase->add();
+    }
+    // echo ("<pre>");
+    // print_r($_POST);
+    $product_of_sale = new PrSale($num_pr, $num_com, $qte_pr, $prix_vente);
+    try {
+      $product_of_sale->add();
+    } catch (\Throwable $th) {
+    }
+    Product::deleteQty($num_pr, $qte_pr);
     $prsSales = PrSale::displayPrsSale($num_com);
     $sale = Sale::displaySale($num_com);
+  } else {
+    $out_of_stock = true;
   }
+}
+
+// print_r($_POST);
+// print_r($_GET);
+// print_r($_SESSION);
+
+if (isset($_GET['num_pr'])) {
+  extract($_GET);
+  PrSale::deletePrSale($num_pr);
+  $prsSales = PrSale::displayPrsSale($num_com);
+  $sale = Sale::displaySale($num_com);
+}
 
 
-  if (isset($_GET['num_com'])) {
-    extract($_GET);
-    $prsSales = PrSale::displayPrsSale($num_com);
-    $sale = Sale::displaySale($num_com);
-  }
+if (isset($_GET['num_com'])) {
+  extract($_GET);
+  $prsSales = PrSale::displayPrsSale($num_com);
+  $sale = Sale::displaySale($num_com);
+}
 
-  // $test = $_GET['fname'];
-  // var_dump($test);
-  // print_r($_COOKIE);
-  // if ($_COOKIE['id_brand']) {
-  //   # code...
-  // }
-  $clients = Client::afficher("client");
-  $products = Product::afficher("produit");
-  // print_r($Products);
-  $categories = Categorie::afficher("categorie");
-  $brands = Marque::afficher("marque");
+// $test = $_GET['fname'];
+// var_dump($test);
+// print_r($_COOKIE);
+// if ($_COOKIE['id_brand']) {
+//   # code...
+// }
+$clients = Client::afficher("client");
+$products = Product::afficher("produit");
+// print_r($Products);
+$categories = Categorie::afficher("categorie");
+$brands = Marque::afficher("marque");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,7 +78,7 @@ session_start();
     content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
   <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>New Sales</title>
+  <title>Nouvelles ventes</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -124,8 +117,8 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>New Sales</h4>
-            <h6>Create New Sale</h6>
+            <h4>Nouvelles ventes</h4>
+            <h6>Créer une nouvelle vente</h6>
           </div>
         </div>
         <div class="card">
@@ -133,17 +126,17 @@ session_start();
             <div class="row">
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Customer Name</label>
+                  <label>Nom du client</label>
                   <div class="row">
                     <div class="col-lg-10 col-sm-10 col-10">
                       <select class="select" name="id_cli">
-                        <option>Select Customer</option>
+                        <option>Sélectionnez un client</option>
                         <?php foreach ($clients as $client): ?>
                         <option value="<?= $client['id']; ?>" <?php if (!empty($sale)) {
-      if ($client['id'] === $sale['id_cli']) {
-        echo ("selected");
-      }
-    } ?>><?= $client['nom'] . " " . $client['prenom']; ?></option>
+  if ($client['id'] === $sale['id_cli']) {
+    echo ("selected");
+  }
+} ?>><?= $client['nom'] . " " . $client['prenom']; ?></option>
                         <?php endforeach ?>
                       </select>
                     </div>
@@ -157,11 +150,11 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Brand Name</label>
+                  <label>Nom de la marque</label>
                   <div class="row">
                     <div class="col-lg-10 col-sm-10 col-10">
                       <select class="select" name="id_marque" id="brand">
-                        <option value="">Select Brand</option>
+                        <option value="">Sélectionnez une marque</option>
                         <?php foreach ($brands as $brand): ?>
                         <option value="<?= $brand['id_marque']; ?>"><?= $brand['nom_marque']; ?></option>
                         <?php endforeach ?>
@@ -177,11 +170,11 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Category Name</label>
+                  <label>Nom de la catégorie</label>
                   <div class="row">
                     <div class="col-lg-10 col-sm-10 col-10">
                       <select class="select" name="id_cat" id="cat">
-                        <option value="">Select Category</option>
+                        <option value="">Sélectionnez une catégorie</option>
                         <?php foreach ($categories as $cat): ?>
                         <option value="<?= $cat['id_cat']; ?>"><?= $cat['lib_cat']; ?></option>
                         <?php endforeach ?>
@@ -199,11 +192,11 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Product Name</label>
+                  <label>Nom du produit</label>
                   <div class="row">
                     <div class="col-lg-10 col-sm-10 col-10">
                       <select class="select" name="num_pr">
-                        <option>Select Product</option>
+                        <option>Sélectionnez un produit</option>
                         <?php foreach ($products as $pr): ?>
                         <option value="<?= $pr['num_pr']; ?>"><?= $pr['lib_pr']; ?></option>
                         <?php endforeach ?>
@@ -219,20 +212,20 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Quantity</label>
+                  <label>Quantité</label>
                   <input type="text" name="qte_pr" />
                   <?php if (isset($out_of_stock)): ?>
-                  <p style="color:red; text-align: center">Exceed stock</p>
+                  <p style="color:red; text-align: center">Stock épuisé</p>
                   <?php endif ?>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Sale Date</label>
+                  <label>Date de vente</label>
                   <div class="input-groupicon">
                     <input type="text" placeholder="DD-MM-YYYY" class="datetimepicker" name="date_com" value="<?php if (!empty($sale)) {
-    echo $sale['date_com'];
-  } ?>" />
+  echo $sale['date_com'];
+} ?>" />
                     <div class="addonset">
                       <img src="assets/img/icons/calendars.svg" alt="img" />
                     </div>
@@ -241,15 +234,15 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Reference No.</label>
+                  <label>Numéro de référence</label>
                   <input type="text" name="num_com" value="<?php if (!empty($sale)) {
-    echo $sale['num_com'];
-  } ?>" />
+  echo $sale['num_com'];
+} ?>" />
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Price</label>
+                  <label>Prix</label>
                   <input type="text" name="prix_vente" />
                 </div>
               </div>
@@ -259,9 +252,9 @@ session_start();
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>Product Name</th>
-                      <th>Price(DH)</th>
-                      <th>QTY</th>
+                      <th>Nom du produit</th>
+                      <th>Prix (DH)</th>
+                      <th>QTE</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -290,8 +283,8 @@ session_start();
               </div>
             </div>
             <div class="col-lg-12">
-              <button class="btn btn-submit me-2" type="submit" name="add">Add</button>
-              <a href="salesreturnlists.php" class="btn btn-cancel">Cancel</a>
+              <button class="btn btn-submit me-2" type="submit" name="add">Ajouter</button>
+              <a href="salesreturnlists.php" class="btn btn-cancel">Annuler</a>
             </div>
           </form>
         </div>
@@ -327,3 +320,4 @@ session_start();
 <?php else: ?>
 <?php header("Location: signin.php"); ?>
 <?php endif ?>
+

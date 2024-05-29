@@ -5,10 +5,7 @@ session_start();
 <?php
   require_once("../php/Class/Marque.php");
   if (isset($_POST['update'])) {
-    // print_r($_POST);
     extract($_POST);
-    // kanchof wach khona ma chnageach image ila oui kanakhod path l9dim dialha o kansefto f modifiermarque 
-    // sinon kansupprimer l9dima mn ne3d ka n uploadi jdida o kanghewet 3la modifier marque 
     if ($_FILES["image"]["name"] === "") {
       Marque::modifierMarque($nom_marque, $description_marque, $old_image, $id_marque);
       $brand = Marque::afficherMarque($id_marque);
@@ -16,17 +13,12 @@ session_start();
       $filename = $_FILES["image"]["name"];
       $tempname = $_FILES["image"]["tmp_name"];
       $image = "./image/brand/" . $filename;
-
-      // var_dump($image);
-      // echo "<pre>";
-      // var_dump($tempname);
-
       Marque::unlinkFile($old_image);
       if (Marque::uploadFile($tempname, $image)) {
         Marque::modifierMarque($nom_marque, $description_marque, $image, $id_marque);
         $brand = Marque::afficherMarque($id_marque);
       } else {
-        exit("<h3> Failed to upload image!</h3>");
+        exit("<h3> Échec de téléchargement de l'image!</h3>");
       }
     }
   }
@@ -34,22 +26,18 @@ session_start();
     extract($_GET);
     $brand = Marque::afficherMarque($id_marque);
   }
-  // echo ("<pre>");
-  // print_r($brand);
-
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  <meta name="description" content="POS - Bootstrap Admin Template" />
-  <meta name="keywords"
-    content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
-  <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
+  <meta name="description" content="POS - Modèle d'administration Bootstrap" />
+  <meta name="keywords" content="admin, estimations, bootstrap, business, corporate, creative, gestion, minimaliste, moderne, html5, responsive" />
+  <meta name="author" content="Dreamguys - Modèle d'administration Bootstrap" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Edit Brand</title>
+  <title>Modifier Marque</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -79,8 +67,8 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Edit Brand</h4>
-            <h6>Update Your Brand</h6>
+            <h4>Modifier Marque</h4>
+            <h6>Mettez à jour votre marque</h6>
           </div>
         </div>
         <div class="card">
@@ -88,7 +76,7 @@ session_start();
             <form class="row" method="post" action="editbrand.php" enctype="multipart/form-data">
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Brand Name</label>
+                  <label>Nom de la marque</label>
                   <input type="hidden" name="id_marque" value="<?= $brand['id_marque'] ?>">
                   <input type="text" name="nom_marque" value="<?= $brand['nom_marque'] ?>" />
                 </div>
@@ -96,53 +84,44 @@ session_start();
               <div class="col-lg-12">
                 <div class="form-group">
                   <label>Description</label>
-                  <input type="text" class="form-control" name="description_marque"
-                    value="<?= $brand['description_marque'] ?>">
+                  <input type="text" class="form-control" name="description_marque" value="<?= $brand['description_marque'] ?>">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label> Brand Image</label>
+                  <label>Image de la marque</label>
                   <div class="image-upload">
                     <input type="file" name="image" accept="image/png, image/jpeg" value="<?= $brand['br_image'] ?>" />
                     <input type="hidden" name="old_image" value="<?= $brand['br_image'] ?>" />
                     <div class="image-uploads">
                       <img src="assets/img/icons/upload.svg" alt="img" />
-                      <h4>Drag and drop a file to upload</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <button class="btn btn-submit me-2" type="submit" name="update">Update</button>
-                <a href="./brandlist.php" class="btn btn-cancel">Cancel</a>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+                      <h4>Glissez et déposez un fichier pourle télécharger</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-12">
+<button class="btn btn-submit me-2" type="submit" name="update">Mettre à jour</button>
+<a href="./brandlist.php" class="btn btn-cancel">Annuler</a>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
   </div>
-
   <script src="assets/js/jquery-3.6.0.min.js"></script>
-
   <script src="assets/js/feather.min.js"></script>
-
   <script src="assets/js/jquery.slimscroll.min.js"></script>
-
   <script src="assets/js/jquery.dataTables.min.js"></script>
   <script src="assets/js/dataTables.bootstrap4.min.js"></script>
-
   <script src="assets/js/bootstrap.bundle.min.js"></script>
-
   <script src="assets/plugins/select2/js/select2.min.js"></script>
-
   <script src="assets/plugins/sweetalert/sweetalert2.all.min.js"></script>
   <script src="assets/plugins/sweetalert/sweetalerts.min.js"></script>
-
   <script src="assets/js/script.js"></script>
 </body>
-
 </html>
 <?php else: ?>
 <?php header("Location: signin.php"); ?>

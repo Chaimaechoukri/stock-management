@@ -22,7 +22,7 @@ session_start();
     content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
   <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Category List</title>
+  <title>Liste Categorie</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -52,12 +52,12 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Product Category List</h4>
-            <h6>View/Search Product Categories</h6>
+            <h4>Liste des catégories de produits</h4>
+            <h6>Afficher/Rechercher des catégories de produits</h6>
           </div>
           <div class="page-btn">
             <a href="addcategory.php" class="btn btn-added">
-              <img src="assets/img/icons/plus.svg" class="me-1" alt="img" />Add Category
+              <img src="assets/img/icons/plus.svg" class="me-1" alt="img" />Ajouter Categorie
             </a>
           </div>
         </div>
@@ -77,11 +77,11 @@ session_start();
               <table class="table datanew">
                 <thead>
                   <tr>
-                    <th>Category Image</th>
-                    <th>Category Name</th>
-                    <th>Description</th>
-                    <th>Created By</th>
-                    <th>Action</th>
+                       <th>Image de la catégorie</th>
+                       <th>Nom de la catégorie</th>
+                       <th>Description</th>
+                       <th>Créé par</th>
+                       <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>

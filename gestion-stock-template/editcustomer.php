@@ -9,8 +9,8 @@ session_start();
   // print_r($_POST);
   if (isset($_POST['edit'])) {
     extract($_POST);
-    // kanchof wach khona ma chnageach image ila oui kanakhod path l9dim dialha o kansefto f modifiermarque 
-    // sinon kansupprimer l9dima mn ne3d ka n uploadi jdida o kanghewet 3la modifier marque 
+    // Vérifier si l'image a été modifiée, si oui, prendre le chemin de l'ancienne image et la supprimer dans modifiermarque 
+    // Sinon, supprimer l'ancienne et télécharger la nouvelle image puis l'associer à modifiermarque 
     if ($_FILES["image"]["name"] === "") {
       Client::modifier($id, $nom, $prenom, $adr, $tele, $email, $old_image, "client");
     } else {
@@ -26,10 +26,10 @@ session_start();
         if (unlink($old_image)) {
           Client::modifier($id, $nom, $prenom, $adr, $tele, $email, $image, "client");
         } else {
-          exit("<h3> Failed to delete image!</h3>");
+          exit("<h3> Échec de la suppression de l'image !</h3>");
         }
       } else {
-        exit("<h3> Failed to upload image!</h3>");
+        exit("<h3> Échec de l'upload de l'image !</h3>");
       }
     }
     $client = Client::affciherPersonne($id, "client");
@@ -41,17 +41,17 @@ session_start();
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  <meta name="description" content="POS - Bootstrap Admin Template" />
+  <meta name="description" content="POS - Modèle d'administration Bootstrap" />
   <meta name="keywords"
-    content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
-  <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
+    content="admin, devis, bootstrap, entreprise, corporate, créatif, facture, html5, responsive, Projets" />
+  <meta name="author" content="Dreamguys - Modèle d'administration Bootstrap" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Edit Customer</title>
+  <title>Modifier un client</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -94,8 +94,8 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Edit Customer</h4>
-            <h6>Update Your Customer</h6>
+            <h4>Modifier un client</h4>
+            <h6>Mettre à jour votre client</h6>
           </div>
         </div>
 
@@ -104,14 +104,14 @@ session_start();
             <form class="row" method="post" action="editcustomer.php" enctype="multipart/form-data">
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Customer Last Name</label>
+                  <label>Nom du client</label>
                   <input type="text" name="nom" value="<?= $client['nom']; ?>" />
                   <input type="hidden" name="id" value="<?= $client['id']; ?>" />
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Customer First Name</label>
+                  <label>Prénom du client</label>
                   <input type="text" name="prenom" value="<?= $client['prenom']; ?>" />
                 </div>
               </div>
@@ -123,32 +123,32 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Phone</label>
+                  <label>Téléphone</label>
                   <input type="text" name="tele" value="<?= $client['tele']; ?>" />
                 </div>
               </div>
               <div class="col-lg-9 col-12">
                 <div class="form-group">
-                  <label>Address</label>
+                  <label>Adresse</label>
                   <input type="text" name="adr" value="<?= $client['adr']; ?>" />
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label> Avatar</label>
+                  <label> Image</label>
                   <div class="image-upload">
                     <input type="file" name="image" />
                     <input type="hidden" name="old_image" value="<?= $client['image']; ?>" />
                     <div class="image-uploads">
                       <img src="assets/img/icons/upload.svg" alt="img" />
-                      <h4>Drag and drop a file to upload</h4>
+                      <h4>Glissez-déposez un fichier pour le télécharger</h4>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-12">
-                <button class="btn btn-submit me-2" type="submit" name="edit">Update</button>
-                <a href="customerlist.php" class="btn btn-cancel">Cancel</a>
+                <button class="btn btn-submit me-2" type="submit" name="edit">Mettre à jour</button>
+                <a href="customerlist.php" class="btn btn-cancel">Annuler</a>
               </div>
             </form>
           </div>
@@ -174,9 +174,9 @@ session_start();
   <script src="assets/plugins/sweetalert/sweetalerts.min.js"></script>
 
   <script src="assets/js/script.js"></script>
-</body>
+  </body>
 
-</html>
-<?php else: ?>
-<?php header("Location: signin.php"); ?>
-<?php endif ?>
+  </html>
+  <?php else: ?>
+  <?php header("Location: signin.php"); ?>
+  <?php endif ?>

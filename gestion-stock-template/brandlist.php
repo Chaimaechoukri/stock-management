@@ -22,7 +22,7 @@ session_start();
     content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
   <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Brand List</title>
+  <title>Liste Marque</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -53,12 +53,12 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Brand List</h4>
-            <h6>Manage Your Brands</h6>
+            <h4>Liste Marque</h4>
+            <h6>Gérer vos marques</h6>
           </div>
           <div class="page-btn">
             <a href="addbrand.php" class="btn btn-added"><img src="assets/img/icons/plus.svg" class="me-2"
-                alt="img" />Add Brand</a>
+                alt="img" />Ajouter Marque</a>
           </div>
         </div>
         <div class="card">
@@ -75,8 +75,8 @@ session_start();
                 <thead>
                   <tr>
                     <th>Logo</th>
-                    <th>Brand Name</th>
-                    <th>Brand Description</th>
+                    <th>Nom Marque</th>
+                    <th>Marque Description</th>
                     <th>Action</th>
                   </tr>
                 </thead>

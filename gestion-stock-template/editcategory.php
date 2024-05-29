@@ -5,32 +5,24 @@ session_start();
 <?php
   require("../php/Class/Categorie.php");
   if (isset($_POST['edit'])) {
-    // print_r($_POST);
     extract($_POST);
-    // kanchof wach khona ma chnageach image ila oui kanakhod path l9dim dialha o kansefto f modifiermarque 
-    // sinon kansupprimer l9dima mn ne3d ka n uploadi jdida o kanghewet 3la modifier marque 
     if ($_FILES["image"]["name"] === "") {
       Categorie::modifierCat($id_cat, $lib_cat, $desc_cat, $old_image);
       $cat = Categorie::affichetCat($id_cat);
     } else {
-      // han kaykoun howa bgha imodifi ta image 
       $filename = $_FILES["image"]["name"];
       $tempname = $_FILES["image"]["tmp_name"];
       $image = "./image/category/" . $filename;
-
-      // var_dump($image);
-      // echo "<pre>";
-      // var_dump($tempname);
 
       if (move_uploaded_file($tempname, $image)) {
         if (unlink($old_image)) {
           Categorie::modifierCat($id_cat, $lib_cat, $desc_cat, $image);
           $cat = Categorie::affichetCat($id_cat);
         } else {
-          exit("<h3> Failed to delete image!</h3>");
+          exit("<h3> Échec de la suppression de l'image !</h3>");
         }
       } else {
-        exit("<h3> Failed to uploade image!</h3>");
+        exit("<h3> Échec du téléchargement de l'image !</h3>");
       }
     }
   }
@@ -40,17 +32,17 @@ session_start();
   }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  <meta name="description" content="POS - Bootstrap Admin Template" />
+  <meta name="description" content="POS - Modèle d'administration Bootstrap" />
   <meta name="keywords"
-    content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
-  <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
+    content="admin, devis, bootstrap, entreprise, corporate, créatif, facture, html5, responsive, Projets" />
+  <meta name="author" content="Dreamguys - Modèle d'administration Bootstrap" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Edit Category</title>
+  <title>Modifier la catégorie</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -80,8 +72,8 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Edit Category</h4>
-            <h6>Edit Product Category</h6>
+            <h4>Modifier la catégorie</h4>
+            <h6>Modifier la catégorie de produit</h6>
           </div>
         </div>
         <div class="card">
@@ -89,33 +81,33 @@ session_start();
             <form class="row" method="post" action="editcategory.php" enctype="multipart/form-data">
               <div class="col-lg-6 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Category Name</label>
+                  <label>Nom de la catégorie</label>
                   <input type="hidden" name="id_cat" value="<?= $cat['id_cat'] ?>" />
                   <input type="text" name="lib_cat" value="<?= $cat['lib_cat'] ?>" />
                 </div>
               </div>
               <div class="col-lg-6 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Category Description</label>
+                  <label>Description de la catégorie</label>
                   <input type="text" name="desc_cat" value="<?= $cat['desc_cat'] ?>" />
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label> Category Image</label>
+                  <label> Image de la catégorie</label>
                   <div class="image-upload">
                     <input type="file" name="image" accept="image/png, image/jpeg" />
                     <input type="hidden" name="old_image" value="<?= $cat['cat_image'] ?>" />
                     <div class="image-uploads">
                       <img src="assets/img/icons/upload.svg" alt="img" />
-                      <h4>Drag and drop a file to upload</h4>
+                      <h4>Glissez-déposez un fichier pour le télécharger</h4>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-12">
-                <button class="btn btn-submit me-2" type="submit" name="edit">Submit</button>
-                <a href="categorylist.php" class="btn btn-cancel">Cancel</a>
+                <button class="btn btn-submit me-2" type="submit" name="edit">Soumettre</button>
+                <a href="categorylist.php" class="btn btn-cancel">Annuler</a>
               </div>
             </form>
           </div>

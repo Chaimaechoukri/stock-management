@@ -12,17 +12,17 @@ session_start();
   $sales = Sale::displayAllSales();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  <meta name="description" content="POS - Bootstrap Admin Template" />
+  <meta name="description" content="POS - Modèle d'administration Bootstrap" />
   <meta name="keywords"
-    content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
-  <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
+    content="admin, estimations, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
+  <meta name="author" content="Dreamguys - Modèle d'administration Bootstrap" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Sales List</title>
+  <title>Liste des ventes</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -54,12 +54,12 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Sales List</h4>
-            <h6>Manage Your Sales</h6>
+            <h4>Liste des ventes</h4>
+            <h6>Gérez vos ventes</h6>
           </div>
           <div class="page-btn">
             <a href="createsalesreturns.php" class="btn btn-added"><img src="assets/img/icons/plus.svg" alt="img"
-                class="me-2" />Add New Sale</a>
+                class="me-2" />Ajouter une nouvelle vente</a>
           </div>
         </div>
 
@@ -76,10 +76,10 @@ session_start();
               <table class="table datanew">
                 <thead>
                   <tr>
-                    <th>Sale reference</th>
-                    <th>Customer</th>
+                    <th>Référence de vente</th>
+                    <th>Client</th>
                     <th>Date</th>
-                    <th>Grand Total (DH)</th>
+                    <th>Total (DH)</th>
                     <th>Action</th>
                   </tr>
                 </thead>

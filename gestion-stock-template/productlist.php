@@ -22,7 +22,7 @@ session_start();
     content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
   <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Product List</title>
+  <title>Liste Des Produits</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -52,13 +52,13 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Product List</h4>
-            <h6>Manage Your Products</h6>
+            <h4>Liste Produits</h4>
+            <h6>Gérer vos Produits</h6>
           </div>
           <div class="page-btn">
             <a href="addproduct.php" class="btn btn-added">
               <img src="assets/img/icons/plus.svg" alt="img" class="me-1" />
-              Add New Product
+              Ajouter nouveau Produit
             </a>
           </div>
         </div>
@@ -78,14 +78,15 @@ session_start();
               <table class="table datanew">
                 <thead>
                   <tr>
-                    <th>Product Name</th>
-                    <th>Reference</th>
-                    <th>Category</th>
-                    <th>Brand</th>
-                    <th>Purchase Price</th>
-                    <th>Unit Price</th>
-                    <th>Qty</th>
-                    <th>Action</th>
+                    
+                  <th>Nom du produit</th>
+                  <th>Référence</th>
+                  <th>Catégorie</th>
+                  <th>Marque</th>
+                  <th>Prix d'achat</th>
+                  <th>Prix unitaire</th>
+                  <th>Quantité</th>
+                  <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>

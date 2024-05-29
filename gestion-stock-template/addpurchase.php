@@ -10,23 +10,23 @@ session_start();
   $active = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "active", 0, 0, 0, 0, 0, 0);
   if (isset($_POST['add'])) {
     extract($_POST);
-    // ila deja 3amro inser had purchase ..
+    // Vérifier si l'achat existe déjà
     if (!Purchase::isPurchase($num_app)) {
-      $pruchase = new Purchase($num_app, $date_app, $id, $desc_app);
-      $pruchase->add();
+      $purchase = new Purchase($num_app, $date_app, $id, $desc_app);
+      $purchase->add();
     }
-    // echo ("<pre>");
-    // print_r($_POST);
+
     $product_of_purchase = new PrPurchase($num_app, $num_pr, $qte_achete);
     try {
       $product_of_purchase->add();
     } catch (\Throwable $th) {
     }
+
     Product::editQty($num_pr, $qte_achete);
     $prPurchases = PrPurchase::displayPrPurchase($num_app);
     $pur = Purchase::displayPur($num_app);
-    // print_r($pur);
   }
+
   if (isset($_GET['num_pr'])) {
     extract($_GET);
     Purchase::deletePrPurchase($num_pr, $num_app);
@@ -40,21 +40,19 @@ session_start();
   }
   $suppliers = Supplier::afficher("fournisseur");
   $products = Product::afficher("produit");
-  // print_r($prPurchases);
-
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  <meta name="description" content="POS - Bootstrap Admin Template" />
+  <meta name="description" content="POS - Modèle d'administration Bootstrap" />
   <meta name="keywords"
-    content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
-  <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
+    content="admin, devis, bootstrap, entreprise, corporate, créatif, facture, html5, responsive, Projets" />
+  <meta name="author" content="Dreamguys - Modèle d'administration Bootstrap" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Add Purchase</title>
+  <title>Ajouter un achat</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -94,8 +92,8 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Add Purchase </h4>
-            <h6>Add New Purchase</h6>
+            <h4>Ajouter un achat </h4>
+            <h6>Ajouter un nouvel achat</h6>
           </div>
         </div>
         <div class="card">
@@ -103,11 +101,11 @@ session_start();
             <div class="row">
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Supplier Name</label>
+                  <label>Nom du fournisseur</label>
                   <div class="row">
                     <div class="col-lg-10 col-sm-10 col-10">
                       <select class="select" name="id">
-                        <option value="">Select</option>
+                        <option value="">Sélectionner</option>
                         <?php foreach ($suppliers as $item): ?>
                         <option value="<?= $item['id']; ?>" <?php if (isset($pur)) {
       if ($item['id'] === $pur['id_four']) {
@@ -129,11 +127,11 @@ session_start();
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6 col-12">
+              <div class="col-lg-3 col-sm -6 col-12">
                 <div class="form-group">
-                  <label>Purchase Date </label>
+                  <label>Date d'achat</label>
                   <div class="input-groupicon">
-                    <input type="text" placeholder="DD-MM-YYYY" class="datetimepicker" name="date_app" value="<?php if (isset($pur)) {
+                    <input type="text" placeholder="JJ-MM-AAAA" class="datetimepicker" name="date_app" value="<?php if (isset($pur)) {
     echo ($pur['date_app']);
   } ?>" />
                     <div class="addonset">
@@ -144,9 +142,9 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Product Name</label>
+                  <label>Nom du produit</label>
                   <select class="select" name="num_pr">
-                    <option value="">Choose product</option>
+                    <option value="">Choisir un produit</option>
                     <?php foreach ($products as $item): ?>
                     <option value="<?= $item['num_pr']; ?>">
                       <?= $item['lib_pr']; ?>
@@ -157,7 +155,7 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Reference No.</label>
+                  <label>Référence</label>
                   <input type="text" name="num_app" value="<?php if (isset($pur)) {
     echo ($pur['num_app']);
   } ?>" />
@@ -165,7 +163,7 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Quantity</label>
+                  <label>Quantité</label>
                   <input type="text" name="qte_achete" />
                   <input type="hidden" name="current_num_app" />
                 </div>
@@ -184,11 +182,11 @@ session_start();
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>Product Name</th>
+                      <th>Nom du produit</th>
                       <th>QTY</th>
-                      <th>Purchase Price(DH)</th>
-                      <th class="text-end">Unit Cost(DH)</th>
-                      <th class="text-end">Total Cost (DH)</th>
+                      <th>Prix d'achat (DH)</th>
+                      <th class="text-end">Coût unitaire (DH)</th>
+                      <th class="text-end">Coût total (DH)</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -220,8 +218,8 @@ session_start();
             </div>
 
             <div class="col-lg-12">
-              <button class="btn btn-submit me-2" type="submit" name="add">Add</button>
-              <a href="purchaselist.php" class="btn btn-cancel">Cancel</a>
+              <button class="btn btn-submit me-2" type="submit" name="add">Ajouter</button>
+              <a href="purchaselist.php" class="btn btn-cancel">Annuler</a>
             </div>
           </form>
         </div>
@@ -255,3 +253,4 @@ session_start();
 <?php else: ?>
 <?php header("Location: signin.php"); ?>
 <?php endif ?>
+

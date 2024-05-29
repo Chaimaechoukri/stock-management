@@ -16,17 +16,17 @@ session_start();
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  <meta name="description" content="POS - Bootstrap Admin Template" />
+  <meta name="description" content="POS - Modèle d'administration Bootstrap" />
   <meta name="keywords"
-    content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
-  <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
+    content="admin, estimations, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
+  <meta name="author" content="Dreamguys - Modèle d'administration Bootstrap" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Purchase List</title>
+  <title>Liste des achats</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -58,13 +58,13 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Purchase List</h4>
-            <h6>Manage Your Purchases</h6>
+            <h4>Liste des achats</h4>
+            <h6>Gérez vos achats</h6>
           </div>
           <div class="page-btn">
             <a href="addpurchase.php" class="btn btn-added">
-              <img src="assets/img/icons/plus.svg" alt="img" />Add New
-              Purchases
+              <img src="assets/img/icons/plus.svg" alt="img" />Ajouter de nouveaux
+              achats
             </a>
           </div>
         </div>
@@ -85,8 +85,8 @@ session_start();
               <table class="table datanew">
                 <thead>
                   <tr>
-                    <th>Supplier Name</th>
-                    <th>Reference</th>
+                    <th>Nom du fournisseur</th>
+                    <th>Référence</th>
                     <th>Date</th>
                     <th>Total (DH)</th>
                     <th>Action</th>

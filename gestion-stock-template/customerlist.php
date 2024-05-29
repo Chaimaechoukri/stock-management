@@ -13,17 +13,17 @@ session_start();
   $clients = Client::afficher("client");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  <meta name="description" content="POS - Bootstrap Admin Template" />
+  <meta name="description" content="POS - Modèle d'administration Bootstrap" />
   <meta name="keywords"
-    content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
-  <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
+    content="admin, devis, bootstrap, entreprise, corporate, créatif, facture, html5, responsive, Projets" />
+  <meta name="author" content="Dreamguys - Modèle d'administration Bootstrap" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Customer List</title>
+  <title>Liste des clients</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -55,12 +55,12 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Customer List</h4>
-            <h6>Manage Your Customers</h6>
+            <h4>Liste des clients</h4>
+            <h6>Gérez vos clients</h6>
           </div>
           <div class="page-btn">
-            <a href="addcustomer.php" class="btn btn-added"><img src="assets/img/icons/plus.svg" alt="img" />Add
-              Customer</a>
+            <a href="addcustomer.php" class="btn btn-added"><img src="assets/img/icons/plus.svg" alt="img" />Ajouter
+              un client</a>
           </div>
         </div>
 
@@ -77,9 +77,9 @@ session_start();
               <table class="table datanew">
                 <thead>
                   <tr>
-                    <th>Customer Name</th>
-                    <th>Address</th>
-                    <th>Phone</th>
+                    <th>Nom du client</th>
+                    <th>Adresse</th>
+                    <th>Téléphone</th>
                     <th>E-mail</th>
                     <th>Action</th>
                   </tr>

@@ -34,7 +34,7 @@ session_start();
     content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
   <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Add Product</title>
+  <title>Ajouter Produit</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -66,8 +66,8 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Add Product</h4>
-            <h6>Create new product</h6>
+            <h4>Ajouter Produit</h4>
+            <h6>Creer Un Nouveau Produit</h6>
           </div>
         </div>
         <div class="card">
@@ -81,13 +81,13 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Product Name</label>
+                  <label>Nom Produit</label>
                   <input type="text" name="lib_pr" />
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Category</label>
+                  <label>Categorie</label>
                   <select class="select" name="id_cat">
                     <option value="">Choose Category</option>
                     <?php foreach ($cats as $item): ?>
@@ -100,7 +100,7 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Brand</label>
+                  <label>Marque</label>
                   <select class="select" name="id_marque">
                     <option value="">Choose Brand</option>
                     <?php foreach ($brands as $item): ?>
@@ -113,19 +113,19 @@ session_start();
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Quantity</label>
+                  <label>Quantite</label>
                   <input type="text" name="qte_stock" />
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>purchase price</label>
+                  <label>Prix d'achat</label>
                   <input type="text" name="prix_achat" />
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>unit price</label>
+                  <label>Prix unitaire</label>
                   <input type="text" name="prix_uni" />
                 </div>
               </div>
@@ -138,19 +138,19 @@ session_start();
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label> Product Image</label>
+                  <label> Image Produit</label>
                   <div class="image-upload">
                     <input type="file" name="image" />
                     <div class="image-uploads">
                       <img src="assets/img/icons/upload.svg" alt="img" />
-                      <h4>Drag and drop a file to upload</h4>
+                      <h4>Glissez-déposez un fichier pour le télécharger</h4>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-12">
-                <button class="btn btn-submit me-2" name="add">Add product</button>
-                <a href="productlist.php" class="btn btn-cancel">Cancel</a>
+                <button class="btn btn-submit me-2" name="add">Ajouter Produit</button>
+                <a href="productlist.php" class="btn btn-cancel">Annuler</a>
               </div>
             </form>
           </div>

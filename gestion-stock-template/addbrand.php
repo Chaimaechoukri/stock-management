@@ -31,7 +31,7 @@ session_start();
     content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects" />
   <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Add Brand</title>
+  <title>Ajouter Marque</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -63,8 +63,8 @@ session_start();
       <div class="content">
         <div class="page-header">
           <div class="page-title">
-            <h4>Add Brand</h4>
-            <h6>Add New Brand</h6>
+            <h4>Ajouter Marque</h4>
+            <h6>Ajouter Une Nouvelle Marque </h6>
           </div>
         </div>
         <div class="card">
@@ -72,7 +72,7 @@ session_start();
             <form class="row" method="post" action="addbrand.php" enctype="multipart/form-data">
               <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
-                  <label>Brand Name</label>
+                  <label>Nom Marque</label>
                   <input type="text" name="nom_marque" />
                 </div>
               </div>
@@ -84,19 +84,19 @@ session_start();
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label> Product Image</label>
+                  <label> Image Produit</label>
                   <div class="image-upload">
                     <input type="file" name="image" accept="image/png, image/jpeg" />
                     <div class="image-uploads">
                       <img src="assets/img/icons/upload.svg" alt="img" />
-                      <h4>Drag and drop a file to upload</h4>
+                      <h4>Glissez-déposez un fichier pour le télécharger</h4>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-12">
-                <button class="btn btn-submit me-2" type="submit" name="add">Add</button>
-                <a href="brandlist.php" class="btn btn-cancel" type="reset">Cancel</a>
+                <button class="btn btn-submit me-2" type="submit" name="add">Ajouter</button>
+                <a href="brandlist.php" class="btn btn-cancel" type="reset">Annuler</a>
               </div>
             </form>
           </div>
